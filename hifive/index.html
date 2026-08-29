@@ -58,22 +58,27 @@
         <li>위치 정보</li>
         <li>사진·연락처·주소록</li>
         <li>알람 응답 내용의 서버 영구 저장 기록</li>
-        <li>광고 식별자(IDFA) 및 마케팅용 추적 정보</li>
+        <li>자녀(아동) 사용자에 대한 광고 식별자 및 추적 정보</li>
       </ul>
+      <p class="note">ℹ️ 알람 동기화 핵심 기능은 위 정보를 수집하지 않습니다. 단, 무료 이용자의 <strong>부모용 화면에 한해</strong> 광고가 게재되며, 관련 데이터 처리는 아래 3항·5항을 참고하십시오.</p>
     </section>
     <section>
       <h2>3. 처리하는 정보 및 처리 방식</h2>
-      <p>서비스 제공을 위해 다음 정보가 <strong>일시적으로(휘발성)</strong> 처리됩니다.</p>
+      <p>서비스 제공을 위해 다음 정보가 처리됩니다.</p>
       <table>
         <tr><th>항목</th><th>목적</th><th>저장 위치</th><th>보관 기간</th></tr>
         <tr><td>기기 푸시 토큰(FCM)</td><td>알람 신호 전달</td><td>Firebase (일시)</td><td>전달 즉시 삭제</td></tr>
         <tr><td>알람 신호(암호화된 값)</td><td>부모-자녀 알람 동기화</td><td>Firebase Realtime DB (휘발성 릴레이)</td><td>수신 즉시 삭제</td></tr>
         <tr><td>부모-자녀 연결 정보</td><td>기기 페어링</td><td>이용자 기기 로컬</td><td>이용자가 삭제 시까지</td></tr>
+        <tr><td>광고 식별자 등 광고 데이터</td><td>부모용 화면 광고 게재 (Google AdMob)</td><td>Google 처리</td><td>Google 정책에 따름</td></tr>
+        <tr><td>광고 제거 구매 여부</td><td>인앱결제 상태 관리</td><td>이용자 기기 로컬</td><td>이용자가 삭제 시까지</td></tr>
       </table>
       <ul>
         <li>모든 알람 신호는 <strong>AES-256으로 종단간 암호화(E2EE)</strong>되어 전송되며, 서버는 복호화 키를 보유하지 않습니다.</li>
         <li>Firebase Realtime Database는 <strong>휘발성 릴레이</strong>로만 사용되어, 수신 즉시 데이터가 삭제되고 서버 로그에 내용이 남지 않습니다.</li>
         <li>부모-자녀 연결 정보는 이용자 <strong>기기 내부에만</strong> 저장됩니다.</li>
+        <li><strong>광고는 부모(성인) 사용자 화면에만 게재</strong>되며, <strong>자녀(아동) 화면에는 어떠한 광고도 노출되지 않습니다.</strong> 기본적으로 비개인화 광고를 사용합니다.</li>
+        <li><strong>광고 제거 인앱결제</strong>(₩3,300, 일회성)를 구매하면 모든 광고가 제거됩니다.</li>
       </ul>
     </section>
     <section>
@@ -85,6 +90,7 @@
       <ul>
         <li>서비스는 이용자의 개인정보를 제3자에게 판매·제공하지 않습니다.</li>
         <li>알람 신호 전달을 위해 <strong>Google Firebase</strong>(Cloud Messaging, Realtime Database) 인프라를 이용합니다. 해당 데이터는 암호화된 상태로 일시 경유하며 즉시 삭제됩니다. (<a href="https://policies.google.com/privacy" target="_blank">Google 개인정보처리방침</a>)</li>
+        <li>부모용 화면 광고 게재를 위해 <strong>Google AdMob</strong>을 이용합니다. AdMob은 광고 제공을 위해 광고 식별자 등을 처리할 수 있습니다. 자녀 화면에는 적용되지 않으며, 광고 제거 구매 시 중단됩니다. (<a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob 개인정보 안내</a>)</li>
       </ul>
     </section>
     <section>
@@ -130,22 +136,27 @@
         <li>Location data</li>
         <li>Photos, contacts, or address book</li>
         <li>Persistent server-side records of alarm responses</li>
-        <li>Advertising identifiers (IDFA) or marketing tracking data</li>
+        <li>Advertising identifiers or tracking data of children (child users)</li>
       </ul>
+      <p class="note">ℹ️ The core alarm-sync functionality does not collect the above. However, ads are shown <strong>only on parent-facing screens</strong> for free users; see sections 3 and 5.</p>
     </section>
     <section>
       <h2>3. Information We Process and How</h2>
-      <p>To provide the Service, the following data is processed <strong>transiently (ephemerally)</strong>:</p>
+      <p>To provide the Service, the following data is processed:</p>
       <table>
         <tr><th>Item</th><th>Purpose</th><th>Storage</th><th>Retention</th></tr>
         <tr><td>Device push token (FCM)</td><td>Deliver alarm signals</td><td>Firebase (transient)</td><td>Deleted immediately after delivery</td></tr>
         <tr><td>Alarm signal (encrypted)</td><td>Parent-child alarm sync</td><td>Firebase Realtime DB (ephemeral relay)</td><td>Removed immediately upon receipt</td></tr>
         <tr><td>Parent-child pairing info</td><td>Device pairing</td><td>User's local device</td><td>Until deleted by the user</td></tr>
+        <tr><td>Advertising identifiers / ad data</td><td>Ads on parent screens (Google AdMob)</td><td>Processed by Google</td><td>Per Google policy</td></tr>
+        <tr><td>Remove-ads purchase status</td><td>In-app purchase state</td><td>User's local device</td><td>Until deleted by the user</td></tr>
       </table>
       <ul>
         <li>All alarm signals are transmitted with <strong>end-to-end AES-256 encryption (E2EE)</strong>; the server does not hold decryption keys.</li>
         <li>Firebase Realtime Database is used only as an <strong>ephemeral relay</strong>: data is removed immediately upon receipt and content is not retained in server logs.</li>
         <li>Parent-child pairing information is stored <strong>only on the user's device</strong>.</li>
+        <li><strong>Ads are shown only on parent (adult) screens; no ads are ever shown on child screens.</strong> Non-personalized ads are used by default.</li>
+        <li>Purchasing the <strong>remove-ads in-app purchase</strong> (₩3,300, one-time) removes all ads.</li>
       </ul>
     </section>
     <section>
@@ -157,6 +168,7 @@
       <ul>
         <li>We do not sell or share users' personal information with third parties.</li>
         <li>We use <strong>Google Firebase</strong> (Cloud Messaging, Realtime Database) infrastructure to relay alarm signals. Such data passes through transiently in encrypted form and is immediately deleted. (<a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>)</li>
+        <li>We use <strong>Google AdMob</strong> to serve ads on parent screens. AdMob may process advertising identifiers to deliver ads. This does not apply to child screens and stops once the remove-ads purchase is made. (<a href="https://support.google.com/admob/answer/6128543" target="_blank">AdMob privacy info</a>)</li>
       </ul>
     </section>
     <section>
