@@ -35,7 +35,7 @@
 <div class="hero">
   <h1>Hi<span class="gold">Five</span> 개인정보 처리방침</h1>
   <p>Privacy Policy</p>
-  <p>최종 업데이트 / Last Updated: 2026-08-29</p>
+  <p>최종 업데이트 / Last Updated: 2026-10-02</p>
 </div>
 
 <div class="lang-tabs">
@@ -55,7 +55,7 @@
       <p>서비스는 다음 정보를 <strong>수집·저장하지 않습니다:</strong></p>
       <ul>
         <li>이름, 생년월일, 이메일, 전화번호 등 신원 식별 정보</li>
-        <li>위치 정보</li>
+        <li>상시·백그라운드 위치 추적 정보 (위치는 아래 3항과 같이 하이파이브 순간 1회만 처리)</li>
         <li>사진·연락처·주소록</li>
         <li>알람 응답 내용의 서버 영구 저장 기록</li>
         <li>자녀(아동) 사용자에 대한 광고 식별자 및 추적 정보</li>
@@ -69,6 +69,7 @@
         <tr><th>항목</th><th>목적</th><th>저장 위치</th><th>보관 기간</th></tr>
         <tr><td>기기 푸시 토큰(FCM)</td><td>알람 신호 전달</td><td>Firebase (일시)</td><td>전달 즉시 삭제</td></tr>
         <tr><td>알람 신호(암호화된 값)</td><td>부모-자녀 알람 동기화</td><td>Firebase Realtime DB (휘발성 릴레이)</td><td>수신 즉시 삭제</td></tr>
+        <tr><td>하이파이브 시점 위치(암호화된 값, 선택)</td><td>부모가 자녀의 하이파이브 위치를 확인</td><td>전송: Firebase (휘발성 릴레이) / 보관: 부모 기기 로컬</td><td>릴레이는 수신 즉시 삭제 / 부모 기기 이력과 함께 삭제</td></tr>
         <tr><td>부모-자녀 연결 정보</td><td>기기 페어링</td><td>이용자 기기 로컬</td><td>이용자가 삭제 시까지</td></tr>
         <tr><td>광고 식별자 등 광고 데이터</td><td>부모용 화면 광고 게재 (Google AdMob)</td><td>Google 처리</td><td>Google 정책에 따름</td></tr>
         <tr><td>광고 제거 구매 여부</td><td>인앱결제 상태 관리</td><td>이용자 기기 로컬</td><td>이용자가 삭제 시까지</td></tr>
@@ -76,6 +77,7 @@
       <ul>
         <li>모든 알람 신호는 <strong>AES-256으로 종단간 암호화(E2EE)</strong>되어 전송되며, 서버는 복호화 키를 보유하지 않습니다.</li>
         <li>Firebase Realtime Database는 <strong>휘발성 릴레이</strong>로만 사용되어, 수신 즉시 데이터가 삭제되고 서버 로그에 내용이 남지 않습니다.</li>
+        <li><strong>위치 정보는 자녀가 하이파이브를 하는 순간 단 1회만</strong> 수집되며, <strong>백그라운드 추적이나 상시 수집은 하지 않습니다.</strong> 위치 값은 알람 신호와 동일하게 <strong>AES-256으로 암호화(E2EE)</strong>되어 전달되고, 서버는 평문 위치를 보지 못하며 수신 즉시 삭제됩니다. 전달된 위치는 <strong>부모 기기에만 저장</strong>되어 하이파이브 이력과 함께 보관·삭제됩니다. 자녀가 <strong>위치 권한을 거부하면 위치 없이 하이파이브가 정상 진행</strong>되며, 지도 기능은 표시되지 않습니다. 지도는 OpenStreetMap을 통해 표시됩니다.</li>
         <li>부모-자녀 연결 정보는 이용자 <strong>기기 내부에만</strong> 저장됩니다.</li>
         <li><strong>광고는 부모(성인) 사용자 화면에만 게재</strong>되며, <strong>자녀(아동) 화면에는 어떠한 광고도 노출되지 않습니다.</strong> 기본적으로 비개인화 광고를 사용합니다.</li>
         <li><strong>광고 제거 인앱결제</strong>(₩3,300, 일회성)를 구매하면 모든 광고가 제거됩니다.</li>
@@ -83,7 +85,7 @@
     </section>
     <section>
       <h2>4. 아동의 개인정보</h2>
-      <p>본 서비스는 초등학생 자녀를 둔 가정을 대상으로 합니다. 서비스는 <strong>아동으로부터 개인정보를 수집하지 않으며</strong>, 아동 계정 생성이나 신원 정보 입력을 요구하지 않습니다. 자녀 기기의 설정은 부모의 관리하에 이루어집니다. 만 14세 미만 아동의 개인정보와 관련하여 우려사항이 있으시면 아래 연락처로 문의해 주십시오.</p>
+      <p>본 서비스는 초등학생 자녀를 둔 가정을 대상으로 합니다. 서비스는 <strong>아동으로부터 신원 정보를 수집하지 않으며</strong>, 아동 계정 생성이나 신원 정보 입력을 요구하지 않습니다. 자녀 기기의 설정은 부모의 관리하에 이루어집니다. <strong>자녀의 위치 정보는 부모가 설정한 알람에 자녀가 하이파이브로 응답하는 순간에 한해 1회 수집되어 부모 기기로만 전달</strong>되며(암호화 전송, 서버 미저장, 부모 기기 로컬 보관), 상시 위치 추적은 이루어지지 않습니다. 위치 수집에는 자녀 기기의 위치 권한 허용이 필요하며, 거부 시 위치 없이 동작합니다. 만 14세 미만 아동의 개인정보와 관련하여 우려사항이 있으시면 아래 연락처로 문의해 주십시오.</p>
     </section>
     <section>
       <h2>5. 제3자 제공 및 위탁</h2>
@@ -133,7 +135,7 @@
       <p>The Service does <strong>not</strong> collect or store:</p>
       <ul>
         <li>Identity information such as name, date of birth, email, or phone number</li>
-        <li>Location data</li>
+        <li>Continuous or background location tracking (location is processed only once at the moment of a high-five; see section 3)</li>
         <li>Photos, contacts, or address book</li>
         <li>Persistent server-side records of alarm responses</li>
         <li>Advertising identifiers or tracking data of children (child users)</li>
@@ -147,6 +149,7 @@
         <tr><th>Item</th><th>Purpose</th><th>Storage</th><th>Retention</th></tr>
         <tr><td>Device push token (FCM)</td><td>Deliver alarm signals</td><td>Firebase (transient)</td><td>Deleted immediately after delivery</td></tr>
         <tr><td>Alarm signal (encrypted)</td><td>Parent-child alarm sync</td><td>Firebase Realtime DB (ephemeral relay)</td><td>Removed immediately upon receipt</td></tr>
+        <tr><td>High-five location (encrypted, optional)</td><td>Let parents see where the child's high-five occurred</td><td>Transit: Firebase (ephemeral relay) / Stored: parent's local device</td><td>Relay deleted immediately upon receipt / Deleted with the parent's history</td></tr>
         <tr><td>Parent-child pairing info</td><td>Device pairing</td><td>User's local device</td><td>Until deleted by the user</td></tr>
         <tr><td>Advertising identifiers / ad data</td><td>Ads on parent screens (Google AdMob)</td><td>Processed by Google</td><td>Per Google policy</td></tr>
         <tr><td>Remove-ads purchase status</td><td>In-app purchase state</td><td>User's local device</td><td>Until deleted by the user</td></tr>
@@ -154,6 +157,7 @@
       <ul>
         <li>All alarm signals are transmitted with <strong>end-to-end AES-256 encryption (E2EE)</strong>; the server does not hold decryption keys.</li>
         <li>Firebase Realtime Database is used only as an <strong>ephemeral relay</strong>: data is removed immediately upon receipt and content is not retained in server logs.</li>
+        <li><strong>Location is collected only once, at the exact moment the child sends a high-five;</strong> there is <strong>no background or continuous location tracking.</strong> Like alarm signals, the location value is <strong>end-to-end encrypted (AES-256)</strong> in transit — the server never sees plaintext location and deletes the relay immediately upon receipt. The delivered location is <strong>stored only on the parent's device</strong> and is kept/deleted together with the high-five history. If the child <strong>denies location permission, the high-five proceeds normally without location</strong> and the map feature is not shown. Maps are rendered via OpenStreetMap.</li>
         <li>Parent-child pairing information is stored <strong>only on the user's device</strong>.</li>
         <li><strong>Ads are shown only on parent (adult) screens; no ads are ever shown on child screens.</strong> Non-personalized ads are used by default.</li>
         <li>Purchasing the <strong>remove-ads in-app purchase</strong> (₩3,300, one-time) removes all ads.</li>
@@ -161,7 +165,7 @@
     </section>
     <section>
       <h2>4. Children's Privacy</h2>
-      <p>The Service is intended for families with elementary-school-age children. The Service <strong>does not collect personal information from children</strong> and does not require child account creation or identity input. Child device settings are managed by the parent. If you have any concerns regarding the personal information of children under the applicable age, please contact us using the details below.</p>
+      <p>The Service is intended for families with elementary-school-age children. The Service <strong>does not collect identity information from children</strong> and does not require child account creation or identity input. Child device settings are managed by the parent. <strong>A child's location is collected only once — at the moment the child responds with a high-five to an alarm set by the parent — and is delivered only to the parent's device</strong> (encrypted in transit, not stored on the server, kept locally on the parent's device); no continuous location tracking is performed. Location collection requires the child device's location permission; if denied, the app works without location. If you have any concerns regarding the personal information of children under the applicable age, please contact us using the details below.</p>
     </section>
     <section>
       <h2>5. Third-Party Sharing</h2>
